@@ -15,19 +15,20 @@
    <children>
       <Pane prefHeight="393.0" prefWidth="716.0">
          <children>
-            <Label layoutX="184.0" layoutY="14.0" prefHeight="54.0" prefWidth="307.0" text="Conpraventa de Skins">
+            <Label layoutX="167.0" layoutY="14.0" prefHeight="54.0" prefWidth="307.0" text="Conpraventa de Skins">
                <font>
                   <Font size="31.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="290.0" layoutY="90.0" prefHeight="28.0" prefWidth="82.0" text="Login">
+            <Label alignment="CENTER" layoutX="273.0" layoutY="90.0" prefHeight="28.0" prefWidth="82.0" text="Login">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <TextField fx:id="usuario" layoutX="257.0" layoutY="150.0" promptText="Usuario" />
-            <TextField fx:id="contrasena" layoutX="257.0" layoutY="197.0" promptText="Contraseña" />
-            <Button fx:id="entrar" layoutX="272.0" layoutY="255.0" mnemonicParsing="false" onAction="#Entrar" prefHeight="44.0" prefWidth="118.0" text="Entrar" />
+            <TextField fx:id="usuario" focusTraversable="false" layoutX="240.0" layoutY="150.0" promptText="Usuario" />
+            <TextField fx:id="contrasena" layoutX="240.0" layoutY="197.0" promptText="Contraseña" />
+            <Button fx:id="entrar" layoutX="255.0" layoutY="281.0" mnemonicParsing="false" onAction="#Entrar" prefHeight="44.0" prefWidth="118.0" text="Entrar" />
+            <Label fx:id="error" layoutX="241.0" layoutY="251.0" visible="false" />
          </children>
       </Pane>
    </children>

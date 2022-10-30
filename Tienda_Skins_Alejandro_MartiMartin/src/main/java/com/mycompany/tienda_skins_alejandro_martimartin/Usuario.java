@@ -18,6 +18,10 @@ public class Usuario {
         this.pass = pass;
     }
     
+     public Usuario(String correo_electronico){
+        this.correo_electronico = correo_electronico;
+     }
+    
     public Usuario(){}
 
     public String getCorreo_electronico() {
