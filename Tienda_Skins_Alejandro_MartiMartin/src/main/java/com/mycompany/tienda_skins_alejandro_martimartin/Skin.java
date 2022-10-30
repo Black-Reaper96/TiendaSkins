@@ -9,18 +9,36 @@ package com.mycompany.tienda_skins_alejandro_martimartin;
  * @author am199
  */
 public class Skin {
+    private int id;
     private String nombre;
     private String codigo;
     private double precio;
     private String juego;
     private String vendedor;
 
+    public Skin(int id, String nombre, String codigo, double precio, String juego, String vendedor) {
+        this.id=id;
+        this.nombre = nombre;
+        this.codigo = codigo;
+        this.precio = precio;
+        this.juego = juego;
+        this.vendedor = vendedor;
+    }
+    
     public Skin(String nombre, String codigo, double precio, String juego, String vendedor) {
         this.nombre = nombre;
         this.codigo = codigo;
         this.precio = precio;
         this.juego = juego;
         this.vendedor = vendedor;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNombre() {

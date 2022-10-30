@@ -5,10 +5,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -17,6 +20,10 @@ public class SecondaryController {
     public Connection con;
     @FXML
     public Label bienvenida;
+    @FXML
+    public int id2;
+    @FXML
+    public int id1;
     
     @FXML
     public TableView<Skin> tabla1 ;
@@ -30,6 +37,8 @@ public class SecondaryController {
     public TableColumn<Skin, String> juego ;
     @FXML
     public TableColumn<Skin, String> vendedor ;
+    @FXML
+    public TableColumn<Skin, Integer> id ;
     
     public TableView<Skin> tabla2 ;
     @FXML
@@ -42,6 +51,34 @@ public class SecondaryController {
     public TableColumn<Skin, String> juego2 ;
     @FXML
     public TableColumn<Skin, String> vendedor2 ;
+    @FXML
+    public TableColumn<Skin, Integer> id_skin2 ;
+    
+    @FXML
+    private TextField nombre_insertar_skin;
+    @FXML
+    private TextField codigo_insertar_skin;
+     @FXML
+    private TextField precio_insertar_skin;
+    @FXML
+    private TextField juego_insertar_skin;
+    @FXML
+    private Button insertar;
+    @FXML
+    private Button modificar;
+    @FXML
+    private Button eliminar;
+     
+    @FXML
+    private TextField nombre_compra_skin;
+    @FXML
+    private TextField codigo_compra_skin;
+    @FXML
+    private TextField precio_compra_skin;
+    @FXML
+    private TextField juego_compra_skin;
+    @FXML
+    private TextField vendedor_compra_skin;
     
     @FXML
     private void initialize() throws SQLException  {
@@ -80,13 +117,74 @@ public class SecondaryController {
             
          }
         
-        MysqlCRUD.obtenerSkinsCompra(UsuarioHolder.getUsuario(), tabla1, nombre_skin, codigo_skin, precio_skin, juego, vendedor);
-        MysqlCRUD.obtenerSkinsVenta(UsuarioHolder.getUsuario(), tabla2, nombre_skin2, codigo_skin2, precio_skin2, juego2, vendedor2);
+        MysqlCRUD.obtenerSkinsCompra(UsuarioHolder.getUsuario(), tabla1, nombre_skin, codigo_skin, precio_skin, juego, vendedor, id);
+        MysqlCRUD.obtenerSkinsVenta(UsuarioHolder.getUsuario(), tabla2, nombre_skin2, codigo_skin2, precio_skin2, juego2, vendedor2, id_skin2);
+    }
+    
+    @FXML
+    private void mostrarDatosTablaInventario(){
+        if(this.tabla2 != null){
+            List<Skin> item = this.tabla2.getSelectionModel().getSelectedItems();
+            final Skin dMostrar = item.get(0);
+            String precio= " "+dMostrar.getPrecio()+" ";
+            this.precio_insertar_skin.setText(precio.trim());
+            this.nombre_insertar_skin.setText(dMostrar.getNombre());
+            this.codigo_insertar_skin.setText(dMostrar.getCodigo());
+            this.juego_insertar_skin.setText(dMostrar.getJuego());
+            this.id2=dMostrar.getId();
+        }
+        
+        
+    }
+    
+    @FXML
+    private void mostrarDatosTablaVentas(){
+        if(this.tabla1 != null){
+            List<Skin> item = this.tabla1.getSelectionModel().getSelectedItems();
+            final Skin dMostrar = item.get(0);
+            String precio= " "+dMostrar.getPrecio()+" ";
+            System.out.println(dMostrar.getVendedor());
+            this.precio_compra_skin.setText(precio.trim());
+            this.nombre_compra_skin.setText(dMostrar.getNombre());
+            this.codigo_compra_skin.setText(dMostrar.getCodigo());
+            this.juego_compra_skin.setText(dMostrar.getJuego());
+            this.vendedor_compra_skin.setText(dMostrar.getVendedor());
+            this.id1=dMostrar.getId();
+        }
+        
+        
     }
 
-
     @FXML
-    private void switchToPrimary() throws IOException {
-        App.setRoot("primary");
+    private void Insertar() throws IOException, SQLException {
+        Skin sk1 = new Skin(this.nombre_insertar_skin.getText(),this.codigo_insertar_skin.getText(),Double.parseDouble(this.precio_insertar_skin.getText()),this.juego_insertar_skin.getText(),UsuarioHolder.getUsuario());
+        MysqlCRUD.insertarSkin(sk1);
+        MysqlCRUD.obtenerSkinsVenta(UsuarioHolder.getUsuario(), tabla2, nombre_skin2, codigo_skin2, precio_skin2, juego2, vendedor2, id_skin2);
+        this.nombre_insertar_skin.setText("");
+        this.codigo_insertar_skin.setText("");
+        this.precio_insertar_skin.setText("");
+        this.juego_insertar_skin.setText("");
+    }
+    
+    @FXML
+    private void Modificar() throws IOException, SQLException {
+        Skin sk2 = new Skin(this.id2,this.nombre_insertar_skin.getText(),this.codigo_insertar_skin.getText(),Double.parseDouble(this.precio_insertar_skin.getText()),this.juego_insertar_skin.getText(),UsuarioHolder.getUsuario());
+        MysqlCRUD.modificarSkin(sk2);
+        MysqlCRUD.obtenerSkinsVenta(UsuarioHolder.getUsuario(), tabla2, nombre_skin2, codigo_skin2, precio_skin2, juego2, vendedor2,id_skin2);
+        this.nombre_insertar_skin.setText("");
+        this.codigo_insertar_skin.setText("");
+        this.precio_insertar_skin.setText("");
+        this.juego_insertar_skin.setText("");
+    }
+    
+    @FXML
+    private void Eliminar() throws IOException, SQLException {
+        Skin sk3 = new Skin(this.id2, this.nombre_insertar_skin.getText(),this.codigo_insertar_skin.getText(),Double.parseDouble(this.precio_insertar_skin.getText()),this.juego_insertar_skin.getText(),UsuarioHolder.getUsuario());
+        MysqlCRUD.eliminarSkin(sk3);
+        MysqlCRUD.obtenerSkinsVenta(UsuarioHolder.getUsuario(), tabla2, nombre_skin2, codigo_skin2, precio_skin2, juego2, vendedor2,id_skin2);
+        this.nombre_insertar_skin.setText("");
+        this.codigo_insertar_skin.setText("");
+        this.precio_insertar_skin.setText("");
+        this.juego_insertar_skin.setText("");
     }
 }
