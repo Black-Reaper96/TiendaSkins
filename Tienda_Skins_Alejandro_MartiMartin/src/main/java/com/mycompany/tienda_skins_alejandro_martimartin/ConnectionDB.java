@@ -23,13 +23,11 @@ public class ConnectionDB {
         
         Connection con =null;
         //HAy que añadir la zona sino da ERROR en la conexion
+        String url="jdbc:mysql://localhost:3306/tienda?serverTimezone=UTC"; 
+        String user="root";
+        String pass="CursoDAM_2223";
         try {
-            InputStream is = new FileInputStream("C:\\Users\\am199\\OneDrive\\Documentos\\NetBeansProjects\\TiendaSkins\\Tienda_Skins_Alejandro_MartiMartin\\PruebaPropiedades.properties");
-            Properties propiedad = new Properties();
-            propiedad.load(is);
-            String url = propiedad.getProperty("base.direccion"), user = propiedad.getProperty("base.usuario"), pass = propiedad.getProperty("base.contra");
-            is.close();
-            // Cargar el driver de mysql
+        // Cargar el driver de mysql
             Class.forName("com.mysql.cj.jdbc.Driver");// la otra que se ultilizaba en el ejemplo anterior esta OBSOLETA
         
             // Obtener la conexión
