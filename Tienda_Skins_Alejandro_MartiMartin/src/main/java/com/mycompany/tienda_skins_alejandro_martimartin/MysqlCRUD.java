@@ -8,15 +8,23 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Optional;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.TilePane;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
 
 /**
@@ -231,4 +239,56 @@ public class MysqlCRUD {
     
     
     }
+    
+    public static void comprarSkin(Skin skin, String nuevodueño) throws IOException{
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setHeaderText(null);
+        alert.setTitle("Confirmación");
+        alert.setContentText("¿Estas seguro de confirmar la acción?");
+        Optional<ButtonType> action = alert.showAndWait();
+        Connection con = null;
+        double precioSkin = skin.getPrecio();
+        double precioSkin1 = skin.getPrecio();
+        
+        try{
+            con = ConnectionDB.openConnection();
+            con.setAutoCommit(false); ////// ----->> Desactivamos auto commit
+            String sql2 ="Update usuarios set saldo=saldo-? where correo_electronico=?";
+            PreparedStatement st2 =  (PreparedStatement)con.prepareStatement(sql2);
+            st2.setDouble(1, precioSkin);
+            st2.setString(2, nuevodueño);
+            st2.executeUpdate();
+            String sql3 ="Update usuarios set saldo=saldo+? where correo_electronico=?";
+            PreparedStatement st3 =  (PreparedStatement)con.prepareStatement(sql3);
+            st3.setDouble(1, precioSkin1);
+            st3.setString(2, skin.getVendedor());
+            st3.executeUpdate();
+            String sql1 ="Update skins set vendedor=? where id=?";
+            PreparedStatement st1 =  (PreparedStatement)con.prepareStatement(sql1);
+            st1.setString(1, nuevodueño);
+            st1.setInt(2, skin.getId());
+            st1.executeUpdate();
+            if (action.get() == ButtonType.OK) {
+                con.commit();
+            } else {
+               con.rollback();
+            }
+              ///// ---->> reflejar las operaciones en la base de datos
+            
+        } catch (SQLException e) {  //Si se produce una Excepción deshacemos las operaciones
+                System.out.println(e.toString());
+                if(con!=null){
+                   try {
+                     con.rollback();///// -----> Deshacer operaciones
+                    } catch (SQLException ex) {
+                             System.out.println(ex.toString());
+                   }
+                }
+        } 
+        
+
+    
+    }
+    
+    
 }

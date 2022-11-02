@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="751.0" prefWidth="779.0" spacing="20.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.tienda_skins_alejandro_martimartin.SecondaryController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" spacing="20.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.tienda_skins_alejandro_martimartin.SecondaryController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
@@ -62,7 +62,7 @@
             <Label layoutX="330.0" layoutY="261.0" text="Precio" />
             <Label layoutX="399.0" layoutY="261.0" text="Juego" />
             <Label layoutX="557.0" layoutY="261.0" text="Vendedor" />
-            <Button layoutX="667.0" layoutY="319.0" mnemonicParsing="false" text="Comprar" />
+            <Button fx:id="comprar" disable="true" layoutX="667.0" layoutY="319.0" mnemonicParsing="false" onAction="#Comprar" text="Comprar" />
             <TextField fx:id="nombre_insertar_skin" layoutX="14.0" layoutY="576.0" />
             <TextField fx:id="codigo_insertar_skin" layoutX="173.0" layoutY="576.0" />
             <TextField fx:id="precio_insertar_skin" layoutX="330.0" layoutY="576.0" prefHeight="25.0" prefWidth="62.0" />
