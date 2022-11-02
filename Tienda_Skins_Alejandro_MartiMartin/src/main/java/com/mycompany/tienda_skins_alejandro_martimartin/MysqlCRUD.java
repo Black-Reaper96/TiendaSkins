@@ -39,7 +39,6 @@ public class MysqlCRUD {
         Connection con =  ConnectionDB.openConnection();
         PreparedStatement ps;
         ResultSet rs;
-        //String cEncriptada = Utilidades.convertirSHA256.encriptarSHA256(contra);
         boolean encontrado=false;
         try{
 		String SQL = "SELECT * FROM usuarios WHERE correo_electronico = ? AND pass = sha1(?) ;";
@@ -50,7 +49,6 @@ public class MysqlCRUD {
                 
                 while (rs.next())
                 {
-                   //System.out.println();
                    encontrado=true;
                 }
                 if(encontrado){
