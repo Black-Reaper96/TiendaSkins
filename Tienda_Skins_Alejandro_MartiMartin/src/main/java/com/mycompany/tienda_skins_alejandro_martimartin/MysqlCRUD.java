@@ -35,19 +35,22 @@ public class MysqlCRUD {
     
     
     
-    public static void consultarUsuario(Connection conexion, String correo, String contra, Label c1) throws IOException{
+    public static void consultarUsuario(String correo, String contra, Label c1) throws IOException{
+        Connection con =  ConnectionDB.openConnection();
         PreparedStatement ps;
         ResultSet rs;
+        //String cEncriptada = Utilidades.convertirSHA256.encriptarSHA256(contra);
         boolean encontrado=false;
         try{
-		String SQL = "SELECT * FROM usuarios WHERE correo_electronico = ? AND pass = ? ;";
-                ps = (PreparedStatement) conexion.prepareStatement(SQL,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE );
+		String SQL = "SELECT * FROM usuarios WHERE correo_electronico = ? AND pass = sha1(?) ;";
+                ps = (PreparedStatement) con.prepareStatement(SQL,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE );
 		ps.setString(1, correo);
                 ps.setString(2, contra);
                 rs = ps.executeQuery();
                 
                 while (rs.next())
                 {
+                   //System.out.println();
                    encontrado=true;
                 }
                 if(encontrado){
@@ -245,7 +248,7 @@ public class MysqlCRUD {
         alert.setHeaderText(null);
         alert.setTitle("Confirmación");
         alert.setContentText("¿Estas seguro de confirmar la acción?");
-        Optional<ButtonType> action = alert.showAndWait();
+       
         Connection con = null;
         double precioSkin = skin.getPrecio();
         double precioSkin1 = skin.getPrecio();
@@ -268,6 +271,7 @@ public class MysqlCRUD {
             st1.setString(1, nuevodueño);
             st1.setInt(2, skin.getId());
             st1.executeUpdate();
+            Optional<ButtonType> action = alert.showAndWait();
             if (action.get() == ButtonType.OK) {
                 con.commit();
             } else {

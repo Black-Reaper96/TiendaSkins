@@ -25,6 +25,6 @@ CREATE TABLE  usuarios (
   
   
   
-insert into usuarios values('ana@gmail.com', '123', 'Ana','Garcia Lopez', 80.75),('juan@gmail.com', '456', 'Juan','Lopez Lopez', 50.25);
+insert into usuarios values('ana@gmail.com', sha1('123'), 'Ana','Garcia Lopez', 80.75),('juan@gmail.com', sha1('456'), 'Juan','Lopez Lopez', 50.25);
 
 insert into skins (nombre,codigo,precio,juego,vendedor) values('Sage galactica', 'fg451df64bdgb6d54df65', 15.25,'Valorant','ana@gmail.com'),('Raze pegaFuerte', 'drtb1fxtg75jh65g84hs98fg', 10.25,'Valorant','ana@gmail.com'),('Orisa heaven', 'b45dfgb65hzd74b68z74dfg', 20.25,'Overwatch','juan@gmail.com'),('Lucio Triton', '645sg684sd+g854su6d', 16.25,'Overwatch','juan@gmail.com');

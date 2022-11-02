@@ -72,9 +72,9 @@
             <Label layoutX="332.0" layoutY="551.0" text="Precio" />
             <Label layoutX="401.0" layoutY="551.0" text="Juego" />
             <Label layoutX="557.0" layoutY="551.0" />
-            <Button fx:id="insertar" layoutX="557.0" layoutY="576.0" mnemonicParsing="false" onAction="#Insertar" prefHeight="25.0" prefWidth="66.0" text="Insertar" />
-            <Button fx:id="modificar" layoutX="557.0" layoutY="610.0" mnemonicParsing="false" onAction="#Modificar" text="Modificar" />
-            <Button layoutX="557.0" layoutY="644.0" mnemonicParsing="false" onAction="#Eliminar" prefHeight="25.0" prefWidth="66.0" text="Eliminar" />
+            <Button fx:id="insertar" disable="true" layoutX="557.0" layoutY="576.0" mnemonicParsing="false" onAction="#Insertar" prefHeight="25.0" prefWidth="66.0" text="Insertar" />
+            <Button fx:id="modificar" disable="true" layoutX="557.0" layoutY="610.0" mnemonicParsing="false" onAction="#Modificar" text="Modificar" />
+            <Button disable="true" layoutX="557.0" layoutY="644.0" mnemonicParsing="false" onAction="#Eliminar" prefHeight="25.0" prefWidth="66.0" text="Eliminar" />
          </children>
       </Pane>
    </children>
