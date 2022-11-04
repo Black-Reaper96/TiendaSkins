@@ -10,19 +10,19 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" spacing="20.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.tienda_skins_alejandro_martimartin.SecondaryController">
+<VBox id="pane" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="797.0" prefWidth="780.0" spacing="20.0" stylesheets="file:/C:/Users/am199/OneDrive/Documentos/NetBeansProjects/TiendaSkins/Tienda_Skins_Alejandro_MartiMartin/src/main/java/Imagenes/estilosTienda.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.tienda_skins_alejandro_martimartin.SecondaryController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
    <children>
-      <Pane prefHeight="734.0" prefWidth="739.0">
+      <Pane id="pane" prefHeight="779.0" prefWidth="874.0">
          <children>
-            <Label fx:id="bienvenida" alignment="CENTER" contentDisplay="CENTER" layoutX="4.0" layoutY="14.0" prefHeight="31.0" prefWidth="635.0">
+            <Label fx:id="bienvenida" alignment="CENTER" contentDisplay="CENTER" layoutX="4.0" layoutY="-2.0" prefHeight="31.0" prefWidth="635.0" textFill="WHITE">
                <font>
                   <Font size="21.0" />
                </font>
             </Label>
-            <TableView fx:id="tabla1" layoutX="11.0" layoutY="93.0" onMouseClicked="#mostrarDatosTablaVentas" prefHeight="168.0" prefWidth="727.0">
+            <TableView fx:id="tabla1" layoutX="7.0" layoutY="93.0" onMouseClicked="#mostrarDatosTablaVentas" prefHeight="168.0" prefWidth="727.0">
               <columns>
                 <TableColumn fx:id="nombre_skin" prefWidth="151.20003700256348" text="Nombre" />
                 <TableColumn fx:id="codigo_skin" prefWidth="159.199951171875" text="Codigo" />
@@ -32,7 +32,7 @@
                   <TableColumn fx:id="id" prefWidth="57.60009765625" text="ID" />
               </columns>
             </TableView>
-            <Label layoutX="6.0" layoutY="331.0" prefHeight="31.0" prefWidth="138.0" text="Inventario:">
+            <Label layoutX="14.0" layoutY="332.0" prefHeight="31.0" prefWidth="138.0" text="Inventario:" textFill="#fffdfd">
                <font>
                   <Font size="21.0" />
                </font>
@@ -47,7 +47,7 @@
                   <TableColumn fx:id="id_skin2" prefWidth="52.0" text="ID" />
                </columns>
             </TableView>
-            <Label layoutX="14.0" layoutY="62.0" prefHeight="31.0" prefWidth="138.0" text="Catalogo:">
+            <Label layoutX="11.0" layoutY="29.0" prefHeight="31.0" prefWidth="138.0" text="Catalogo:" textFill="WHITE">
                <font>
                   <Font size="21.0" />
                </font>
@@ -57,24 +57,26 @@
             <TextField fx:id="precio_compra_skin" layoutX="330.0" layoutY="286.0" prefHeight="25.0" prefWidth="61.0" />
             <TextField fx:id="juego_compra_skin" layoutX="399.0" layoutY="286.0" />
             <TextField fx:id="vendedor_compra_skin" layoutX="557.0" layoutY="286.0" prefHeight="25.0" prefWidth="173.0" />
-            <Label layoutX="14.0" layoutY="261.0" text="Nombre" />
-            <Label layoutX="173.0" layoutY="261.0" text="Codigo" />
-            <Label layoutX="330.0" layoutY="261.0" text="Precio" />
-            <Label layoutX="399.0" layoutY="261.0" text="Juego" />
-            <Label layoutX="557.0" layoutY="261.0" text="Vendedor" />
+            <Label layoutX="14.0" layoutY="261.0" text="Nombre" textFill="WHITE" />
+            <Label layoutX="173.0" layoutY="261.0" text="Codigo" textFill="WHITE" />
+            <Label layoutX="330.0" layoutY="261.0" text="Precio" textFill="WHITE" />
+            <Label layoutX="399.0" layoutY="261.0" text="Juego" textFill="WHITE" />
+            <Label layoutX="557.0" layoutY="261.0" text="Vendedor" textFill="WHITE" />
             <Button fx:id="comprar" disable="true" layoutX="667.0" layoutY="319.0" mnemonicParsing="false" onAction="#Comprar" text="Comprar" />
             <TextField fx:id="nombre_insertar_skin" layoutX="14.0" layoutY="576.0" />
             <TextField fx:id="codigo_insertar_skin" layoutX="173.0" layoutY="576.0" />
             <TextField fx:id="precio_insertar_skin" layoutX="330.0" layoutY="576.0" prefHeight="25.0" prefWidth="62.0" />
             <TextField fx:id="juego_insertar_skin" layoutX="399.0" layoutY="576.0" />
-            <Label layoutX="14.0" layoutY="551.0" text="Nombre" />
-            <Label layoutX="173.0" layoutY="551.0" text="Codigo" />
-            <Label layoutX="332.0" layoutY="551.0" text="Precio" />
-            <Label layoutX="401.0" layoutY="551.0" text="Juego" />
+            <Label layoutX="14.0" layoutY="551.0" text="Nombre" textFill="WHITE" />
+            <Label layoutX="173.0" layoutY="551.0" text="Codigo" textFill="WHITE" />
+            <Label layoutX="332.0" layoutY="551.0" text="Precio" textFill="WHITE" />
+            <Label layoutX="401.0" layoutY="551.0" text="Juego" textFill="WHITE" />
             <Label layoutX="557.0" layoutY="551.0" />
             <Button fx:id="insertar" disable="true" layoutX="557.0" layoutY="576.0" mnemonicParsing="false" onAction="#Insertar" prefHeight="25.0" prefWidth="66.0" text="Insertar" />
             <Button fx:id="modificar" disable="true" layoutX="557.0" layoutY="610.0" mnemonicParsing="false" onAction="#Modificar" text="Modificar" />
             <Button disable="true" layoutX="557.0" layoutY="644.0" mnemonicParsing="false" onAction="#Eliminar" prefHeight="25.0" prefWidth="66.0" text="Eliminar" />
+            <Label layoutX="11.0" layoutY="68.0" text="Buscar por Juego:" textFill="WHITE" />
+            <TextField fx:id="buscador_juego" layoutX="118.0" layoutY="64.0" onAction="#Buscador" onInputMethodTextChanged="#Buscador" onKeyPressed="#Buscador" prefHeight="25.0" prefWidth="239.0" promptText="Introduce el juego para buscar" />
          </children>
       </Pane>
    </children>

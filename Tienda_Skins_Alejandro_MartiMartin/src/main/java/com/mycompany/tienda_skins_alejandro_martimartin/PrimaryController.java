@@ -11,6 +11,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class PrimaryController {
@@ -28,8 +30,10 @@ public class PrimaryController {
     private Button entrar;
     
     @FXML
-    public void initialize() throws IOException{
+    private Pane panel1;
     
+    @FXML
+    public void initialize() throws IOException{
     }
     
     @FXML

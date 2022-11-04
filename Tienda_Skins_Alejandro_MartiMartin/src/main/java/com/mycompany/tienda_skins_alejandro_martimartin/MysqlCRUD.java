@@ -70,7 +70,7 @@ public class MysqlCRUD {
         
     }
     
-    public static void obtenerSkinsCompra(String correo, TableView tabla, TableColumn colID, TableColumn colNombre,TableColumn colEvDe, TableColumn colEmblema, TableColumn colTipo, TableColumn colUlt) throws SQLException{
+    public static void obtenerSkinsCompra(String correo, TableView tabla, TableColumn colID, TableColumn colNombre,TableColumn colEvDe, TableColumn colEmblema, TableColumn colTipo, TableColumn colUlt, TextField nom_juego) throws SQLException{
         
         Connection con = null;
         ObservableList<Skin> obs = FXCollections.observableArrayList();
@@ -82,15 +82,28 @@ public class MysqlCRUD {
             System.out.println(ex.fillInStackTrace());
         }
         String nombre="";
-        PreparedStatement ps;
+        PreparedStatement ps1;
+        PreparedStatement ps2;
         ResultSet rs;
         
            
                 try{
-                    String SQL = "SELECT * FROM skins WHERE vendedor != ? ;";
-                    ps = (PreparedStatement) con.prepareStatement(SQL,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE );
-                    ps.setString(1, correo);
-                    rs = ps.executeQuery();
+                    String SQL;
+                    if(nom_juego.getText().equals("")){
+                        System.out.println("");
+                        SQL = "SELECT * FROM skins WHERE vendedor != ? ;";
+                        ps1 = (PreparedStatement) con.prepareStatement(SQL,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE );
+                        ps1.setString(1, correo);
+                        rs = ps1.executeQuery();
+                    }else{
+                        SQL = "SELECT * FROM skins WHERE vendedor != ? AND juego LIKE ? ;";
+                        ps2 = (PreparedStatement) con.prepareStatement(SQL,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE );
+                        ps2.setString(1, correo);
+                        ps2.setString(2, "%"+nom_juego.getText()+"%");
+                        System.out.println(SQL);
+                        rs = ps2.executeQuery();
+                    }
+                    
 
                     while (rs.next()){
 

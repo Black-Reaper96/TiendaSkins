@@ -70,6 +70,8 @@ public class SecondaryController {
     private Button eliminar;
     @FXML
     private Button comprar;
+    @FXML
+    private Button boton_bucar;
      
      
     @FXML
@@ -84,9 +86,12 @@ public class SecondaryController {
     private TextField vendedor_compra_skin;
     
     @FXML
+    private TextField buscador_juego;
+    
+    @FXML
     private void initialize() throws SQLException, IOException  {
         Bienvenida();
-        MysqlCRUD.obtenerSkinsCompra(UsuarioHolder.getUsuario(), tabla1, nombre_skin, codigo_skin, precio_skin, juego, vendedor, id);
+        MysqlCRUD.obtenerSkinsCompra(UsuarioHolder.getUsuario(), tabla1, nombre_skin, codigo_skin, precio_skin, juego, vendedor, id, buscador_juego);
         MysqlCRUD.obtenerSkinsVenta(UsuarioHolder.getUsuario(), tabla2, nombre_skin2, codigo_skin2, precio_skin2, juego2, vendedor2, id_skin2);
     }
     
@@ -166,7 +171,7 @@ public class SecondaryController {
         Skin sk4 = new Skin(this.id1, this.nombre_compra_skin.getText(),this.codigo_compra_skin.getText(),Double.parseDouble(this.precio_compra_skin.getText()),this.juego_compra_skin.getText(),this.vendedor_compra_skin.getText());
         MysqlCRUD.comprarSkin(sk4, UsuarioHolder.getUsuario());
         Bienvenida();
-        MysqlCRUD.obtenerSkinsCompra(UsuarioHolder.getUsuario(), tabla1, nombre_skin, codigo_skin, precio_skin, juego, vendedor, id);
+        MysqlCRUD.obtenerSkinsCompra(UsuarioHolder.getUsuario(), tabla1, nombre_skin, codigo_skin, precio_skin, juego, vendedor, id, buscador_juego);
         MysqlCRUD.obtenerSkinsVenta(UsuarioHolder.getUsuario(), tabla2, nombre_skin2, codigo_skin2, precio_skin2, juego2, vendedor2,id_skin2);
         Limpieza();
         comprar.setDisable(true);
@@ -211,7 +216,7 @@ public class SecondaryController {
          }
     }
     
-     @FXML
+    @FXML
     private void Limpieza() throws IOException {
     
         this.nombre_compra_skin.setText("");
@@ -223,5 +228,11 @@ public class SecondaryController {
         this.codigo_insertar_skin.setText("");
         this.precio_insertar_skin.setText("");
         this.juego_insertar_skin.setText("");
+        this.buscador_juego.setText("");
+    }
+    
+    @FXML
+    private void Buscador() throws IOException, SQLException {
+        MysqlCRUD.obtenerSkinsCompra(UsuarioHolder.getUsuario(), tabla1, nombre_skin, codigo_skin, precio_skin, juego, vendedor, id, buscador_juego);  
     }
 }

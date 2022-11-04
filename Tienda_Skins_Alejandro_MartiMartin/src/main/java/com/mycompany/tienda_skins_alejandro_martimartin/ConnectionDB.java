@@ -5,6 +5,7 @@
  */
 package com.mycompany.tienda_skins_alejandro_martimartin;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -19,19 +20,29 @@ import java.util.Properties;
 public class ConnectionDB {
     
 
-    public static Connection openConnection() throws FileNotFoundException, IOException {
+    public static Connection openConnection() throws FileNotFoundException, IOException, ClassNotFoundException {
         
-        Connection con =null;
+        Connection con = null;
+        String url; 
+        String user;
+        String pass;
+        
         //HAy que añadir la zona sino da ERROR en la conexion
-        String url="jdbc:mysql://localhost:3306/tienda?serverTimezone=UTC"; 
-        String user="root";
-        String pass="CursoDAM_2223";
         try {
+            InputStream is = new FileInputStream(new File("PruebaPropiedades.properties"));
+            Properties propiedad = new Properties();
+            propiedad.load(is);
+            url = propiedad.getProperty("base.direccion");
+            user = propiedad.getProperty("base.usuario"); 
+            pass = propiedad.getProperty("base.contra");
+            System.out.println("Credenciales: "+url+" "+user+" "+pass);
+            is.close();
+            
         // Cargar el driver de mysql
             Class.forName("com.mysql.cj.jdbc.Driver");// la otra que se ultilizaba en el ejemplo anterior esta OBSOLETA
         
             // Obtener la conexión
-            con= DriverManager.getConnection(url,user,pass);
+            con = DriverManager.getConnection(url,user,pass);
             
             
         } catch (SQLException e) {

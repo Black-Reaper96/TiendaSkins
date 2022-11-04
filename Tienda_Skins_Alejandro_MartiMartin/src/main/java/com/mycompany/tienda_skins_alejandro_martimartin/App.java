@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import javafx.scene.image.Image;
 
 /**
  * JavaFX App
@@ -14,11 +15,13 @@ import java.io.IOException;
 public class App extends Application {
 
     private static Scene scene;
+    private final Image bgImage = new Image("file:src/javafx_imagen_fondo/fondo.jpg");
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primary"), 900, 800);
+        scene = new Scene(loadFXML("primary"));
         stage.setScene(scene);
+        stage.setTitle("App Skins");
         stage.show();
     }
 

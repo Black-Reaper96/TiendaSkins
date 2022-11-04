@@ -9,27 +9,27 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="900.0" spacing="20.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.tienda_skins_alejandro_martimartin.PrimaryController">
+<VBox id="pane" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="778.0" spacing="20.0" stylesheets="file:/C:/Users/am199/OneDrive/Documentos/NetBeansProjects/TiendaSkins/Tienda_Skins_Alejandro_MartiMartin/src/main/java/Imagenes/estilosTienda.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.tienda_skins_alejandro_martimartin.PrimaryController">
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
    </padding>
    <children>
-      <Pane prefHeight="703.0" prefWidth="884.0">
+      <Pane prefHeight="760.0" prefWidth="735.0" style="-fx-background-image: url(&quot;fondo_1.jpg&quot;);" stylesheets="@../../../../java/Imagenes/estilosTienda.css">
          <children>
-            <Label alignment="CENTER" layoutX="292.0" layoutY="203.0" prefHeight="54.0" prefWidth="307.0" text="Conpraventa de Skins">
+            <Label alignment="CENTER" layoutX="241.0" layoutY="196.0" prefHeight="54.0" prefWidth="307.0" text="Compraventa de Skins" textFill="WHITE">
                <font>
                   <Font size="31.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="398.0" layoutY="279.0" prefHeight="28.0" prefWidth="82.0" text="Login">
+            <Label alignment="CENTER" layoutX="347.0" layoutY="272.0" prefHeight="28.0" prefWidth="82.0" text="Login" textFill="WHITE">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <TextField fx:id="usuario" alignment="CENTER" focusTraversable="false" layoutX="365.0" layoutY="339.0" promptText="Usuario" />
-            <Button fx:id="entrar" alignment="CENTER" layoutX="380.0" layoutY="470.0" mnemonicParsing="false" onAction="#Entrar" prefHeight="44.0" prefWidth="118.0" text="Entrar" />
+            <TextField fx:id="usuario" alignment="CENTER" focusTraversable="false" layoutX="314.0" layoutY="332.0" promptText="Usuario" />
+            <Button fx:id="entrar" alignment="CENTER" layoutX="329.0" layoutY="463.0" mnemonicParsing="false" onAction="#Entrar" prefHeight="44.0" prefWidth="118.0" stylesheets="@../../../../java/Imagenes/estilosTienda.css" text="Entrar" />
             <Label fx:id="error" alignment="CENTER" layoutX="241.0" layoutY="251.0" visible="false" />
-            <PasswordField fx:id="contrasena" alignment="CENTER" layoutX="365.0" layoutY="396.0" promptText="Contraseña" />
+            <PasswordField fx:id="contrasena" alignment="CENTER" layoutX="314.0" layoutY="389.0" promptText="Contraseña" />
          </children>
       </Pane>
    </children>
